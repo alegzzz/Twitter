@@ -60,7 +60,9 @@
             </div>
             <hr>
 
+            @foreach($users as $user)
             @include('_template.card')
+            @endforeach
 
         </div>
         <div class="col-3">

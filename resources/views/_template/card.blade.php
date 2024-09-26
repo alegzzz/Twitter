@@ -1,4 +1,4 @@
-@foreach($users as $user)
+
     <div class="mt-3">
         <div class="card">
             <div class="px-3 pt-4 pb-2">
@@ -64,4 +64,3 @@
             </div>
         </div>
     </div>
-@endforeach
