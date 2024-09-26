@@ -10,11 +10,11 @@ class DashboardController extends Controller
 
         $users = [
             [
-                "name" => "janko",
+                "name" => "Thomas",
                 "vek" => "18"
             ],
             [
-            "name" => "peto",
+            "name" => "Shelby",
             "vek" => "11"
             ],
             [
