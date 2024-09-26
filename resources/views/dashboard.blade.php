@@ -59,7 +59,7 @@
                 </div>
             </div>
             <hr>
-            
+
             @include('_template.card')
 
         </div>
