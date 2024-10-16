@@ -20,6 +20,10 @@ class DashboardController extends Controller
             [
             "name" => "sigma",
                 "vek" => "22"
+            ],
+            [
+                "name" => "mafia",
+                "vek" => "33",
             ]
         ];
 
