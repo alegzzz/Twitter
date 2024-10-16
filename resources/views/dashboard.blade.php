@@ -1,11 +1,7 @@
-
-<body>
-@extends('layout.layout')
+@extends('inc.layout')
 
 {{-- musi sa spravit section aby sa dalo yieldnut do ineho filu --}}
 @section('content')
-
-
 
     <div class="row">
         <div class="col-3">
@@ -55,13 +51,13 @@
                     <textarea class="form-control" id="idea" rows="3"></textarea>
                 </div>
                 <div class="">
-                    <button class="btn btn-dark"> Share </button>
+                    <button class="btn btn-dark"> Share</button>
                 </div>
             </div>
             <hr>
 
             @foreach($users as $user)
-            @include('_template.card')
+                @include('inc.card')
             @endforeach
 
         </div>
@@ -114,8 +110,5 @@
         </div>
     </div>
 
-    x
-
 @endsection
 
-</body>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="EN">
 
-{{-- tu sa includuje header z layout --}}
-@include('layout.header')
+<head>
+    {{-- tu sa includuje header z layout --}}
+    @include('inc.head')
+</head>
+
 
 <body>
-{{-- tu includuje navbar z _template --}}
-@include('_template.nav')
+{{-- tu includuje navbar z inc --}}
+@include('inc.nav')
 
 <div class="container py-4">
     {{-- tu sa da cely html content z dashboardu --}}
@@ -14,7 +17,7 @@
 </div>
 
 {{-- tu sa includuje footer z layoutu --}}
-@include('layout.footer')
+@include('inc.footer')
 </body>
 
 </html>
