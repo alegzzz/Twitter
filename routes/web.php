@@ -10,4 +10,6 @@ Route::get('/dashboard', [DashboardController::class, "index"]);
 
 Route::get('/', [ProfileController::class, "index"]);
 
+Route::post('/post', [ProfileController::class, "store"]) -> name("post.store");
+
 

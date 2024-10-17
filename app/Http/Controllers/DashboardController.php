@@ -2,34 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index() {
 
-        $users = [
-            [
-                "name" => "Thomas",
-                "vek" => "18"
-            ],
-            [
-            "name" => "Shelby",
-            "vek" => "11"
-            ],
-            [
-            "name" => "sigma",
-                "vek" => "22"
-            ],
-            [
-                "name" => "mafia",
-                "vek" => "33",
+        $post = new Post([
+            "content" => "test",
+        "likes" => 15,
             ]
+        );
+        //$post->save();
+        $users = [
+
         ];
+
+        $posts = Post::all();
 
         return view(
             'dashboard',
-            ["users" => $users]
+            ["posts" => $posts]
         );
     }
 }
