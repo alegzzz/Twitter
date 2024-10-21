@@ -14,16 +14,21 @@ class DashboardController extends Controller
         "likes" => 15,
             ]
         );
+
         //$post->save();
         $users = [
 
         ];
 
-        $posts = Post::all();
+        $posts = Post::query();
+
+        if(request()->filled('search')){
+            $posts = $posts->where('content', 'like', '%'.request('search').'%');
+        }
 
         return view(
             'dashboard',
-            ["posts" => $posts]
+            ["posts" => $posts->get()]
         );
     }
 }
