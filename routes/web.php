@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/dashboard', [DashboardController::class, "index"]) -> name('dashboard.index');
 
@@ -19,6 +20,9 @@ Route::get('/search', [PostController::class, 'search']) -> name("post.search");
 
 // comments
 Route::post('/comment/{post}', [CommentController::class, 'store']) -> name("comment.store");
+
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']) -> name("register");
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'store']) -> name("register.store");
 
 
 
