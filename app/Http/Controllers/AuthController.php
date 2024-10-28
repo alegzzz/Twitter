@@ -15,11 +15,12 @@ class AuthController extends Controller
 
     public function store(){
 
+
         $validated = request()->validate(
             [
                 'name' => 'required|min:3|max:40',
-                'email' => "required|email|unique:users, email",
-                'password' => "required|min:6|max:20|confirmed",
+                'email' => "required|email|unique:users,email",
+                'password' => "required",
             ]
         );
 
@@ -30,7 +31,31 @@ class AuthController extends Controller
                 'password' => Hash::make($validated['password']),
             ]
         );
+        return redirect() ->route('dashboard.index')->with('success', 'Your account has been created!');
+    }
 
-        return redirect() ->route('dashboard')->with('success', 'Your account has been created!');
+    public function login(){
+        return view('auth.login');
+    }
+
+    public function authenticate(){
+
+        $validated = request()->validate(
+            [
+                'email' => "required|email",
+                'password' => "required",
+            ]
+        );
+
+        if(auth() -> attempt($validated)){
+            request()->session()->regenerate();
+
+            return redirect() -> route('dashboard.index')->with('success', 'You are now logged in!');
+        }
+
+        return redirect() ->route('login.login')->withErrors([
+            'email', 'No matching user found with provided email and password.'
+            ]
+        );
     }
 }

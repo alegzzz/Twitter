@@ -21,8 +21,11 @@ Route::get('/search', [PostController::class, 'search']) -> name("post.search");
 // comments
 Route::post('/comment/{post}', [CommentController::class, 'store']) -> name("comment.store");
 
-Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']) -> name("register");
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']) -> name("register.register");
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'store']) -> name("register.store");
+
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login']) -> name("login.login");
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'authenticate']) -> name("login.authenticate");
 
 
 
