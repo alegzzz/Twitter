@@ -12,14 +12,14 @@ Route::get('/dashboard', [DashboardController::class, "index"]) -> name('dashboa
 Route::get('/', [ProfileController::class, "index"]);
 
 Route::post('/post', [PostController::class, 'store']) -> name("post.store");
-Route::put("post/{post}", [PostController::class, 'update']) -> name("post.update");
+Route::put("post/{post}", [PostController::class, 'update']) -> name("post.update")->middleware("auth");
 Route::get("post/{post}", [PostController::class, 'show']) -> name("post.show");
-Route::get("post/{post}/edit", [PostController::class, 'edit']) -> name("post.edit");
-Route::delete('/post/{post}', [PostController::class, 'destroy']) -> name("post.destroy");
+Route::get("post/{post}/edit", [PostController::class, 'edit']) -> name("post.edit")->middleware("auth");
+Route::delete('/post/{post}', [PostController::class, 'destroy']) -> name("post.destroy")->middleware("auth");
 Route::get('/search', [PostController::class, 'search']) -> name("post.search");
 
 // comments
-Route::post('/comment/{post}', [CommentController::class, 'store']) -> name("comment.store");
+Route::post('/comment/{post}', [CommentController::class, 'store']) -> name("comment.store")->middleware("auth");
 
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register']) -> name("register.register");
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'store']) -> name("register.store");

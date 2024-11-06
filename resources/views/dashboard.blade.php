@@ -44,6 +44,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+
+            @auth()
             <h4> Share yours ideas </h4>
             <div class="row">
                 <form action="{{ route("post.store") }}" method="post">
@@ -61,6 +63,12 @@
                     </div>
                 </form>
             </div>
+                @endauth
+
+                @guest()
+                    <h4> Login to share yours ideas </h4>
+                @endguest
+
             <hr>
             @foreach($posts as $post)
                 @include('inc._post')

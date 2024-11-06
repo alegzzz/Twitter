@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('content');
-            $table->integer('likes');
+            $table->unsignedInteger('likes')->default(0);
             $table->timestamps(); //spravi 2: created_at a updated_at
         });
     }

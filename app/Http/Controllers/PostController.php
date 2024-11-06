@@ -9,18 +9,23 @@ class PostController extends Controller
 {
     public function store()
     {
-        request() -> validate([
-            "content" => 'required|min:1|max:255'
+        $validated = request()->validate([
+            'content' => 'required|min:3|max:240'
         ]);
+
+        $validated['user_id'] = auth()->id();
+
         //dump(request()-> all());
-        Post::create([
-            'content' => request() -> get("content"),
-            'likes' => 0
-        ]);
+
+        Post::create($validated);
+
         return redirect() -> route("dashboard.index") -> with("success", "Post was created");
     }
     public function destroy(Post $post)
     {
+        if(auth()->id() !== $post->user){
+            abort(404);
+        }
         $post -> delete();
 
         return redirect() -> route("dashboard.index") -> with("success", "Post was deleted");
@@ -46,6 +51,10 @@ class PostController extends Controller
     }
     public function update(Post $post)
     {
+        if(auth()->id() !== $post->user){
+            abort(404);
+        }
+        
         request() -> validate([
             "content" => 'required|min:1|max:255'
         ]);
