@@ -66,7 +66,7 @@
                 @endauth
 
                 @guest()
-                    <h4> Login to share yours ideas </h4>
+                    <h4> Login to share your ideas </h4>
                 @endguest
 
             <hr>
