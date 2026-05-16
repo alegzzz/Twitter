@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Penis extends Model{
     // Class implementation
     // Class eokofe
+    //enguihweuigweiughweuighwuiehgiuwheiguhw
 }
